@@ -14,6 +14,13 @@ pipeline {
                 echo 'Task: Run unit tests and integration tests to validate functionality.'
                 echo 'Tool: JUnit (for unit tests), TestNG (for integration tests)'
             }
+            post {
+                success {
+                    mail to: 'andrespulido019@gmail.com',
+                        subject: 'Test Status Email',
+                        body: 'Tests were successful!'
+                }
+            }
         }
 
         stage('Code Analysis') {
@@ -52,3 +59,4 @@ pipeline {
         }
     }
 }
+
