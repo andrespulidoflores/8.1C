@@ -35,6 +35,13 @@ pipeline {
                 echo 'Task: Perform security scans to identify vulnerabilities in code.'
                 echo 'Tool: OWASP Dependency-Check'
             }
+            post {
+                success{
+                    mail to: 'andrespulido019@gmail.com',
+                        subject: 'Security Scan Status Email',
+                        body: 'Security Scan was successful!'
+                }
+            }
         }
 
         stage('Deploy to Staging') {
@@ -59,4 +66,5 @@ pipeline {
         }
     }
 }
+
 
